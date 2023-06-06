@@ -1,25 +1,52 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('CheckOut', () => {
+
+    const QSP = new FormData()
+    //QSP.append('action', "logout")
+    //QSP.append('redirect_to', "minha-conta")
+    // QSP.append('_wpnonce', "3b08e4b464")
+
+    cy.request({
+        url: 'wp-login.php?',
+        method: 'GET',
+        body: {
+           
+        }
+
+    }).then((resp) => {
+        resp.headers['set-cookie'].forEach(cookie => {
+            const primeiro = cookie.split(';')[0]
+            const divisor = primeiro.indexOf('=')
+            const chave = primeiro.substring(0, divisor)
+            const valor = primeiro.substring(divisor + 1)
+            cy.setCookie(chave, valor)
+        });
+    })
+    cy.visit('/minha-conta/')
+})
+
+Cypress.Commands.add('CheckIn', (user, pass) => {
+
+    const fd = new FormData()
+    fd.append('username', user)
+    fd.append('password', pass)
+    fd.append('woocommerce-login-nonce', "e07eab9145")
+    fd.append('_wp_http_referer', "/minha-conta/")
+    fd.append('login', "Login")
+
+    cy.request({
+        url: '/minha-conta/',
+        method: 'POST',
+        body: fd
+
+    })//.then(resp => {
+    //resp.headers['Set-Cookie'].forEach(cookie => {
+    //const primeiro = cookie.split(';')[0]
+    //const divisor = primeiro.indexOf('=')
+    //const chave = primeiro.substring(0, divisor)
+    //const valor = primeiro.substring(divisor + 1)
+    //cy.setCookie(chave, valor)
+    //});
+    //})
+    cy.visit('/minha-conta/')
+})
