@@ -1,5 +1,18 @@
 {
+
+  "emailPageObjects": "fernandocaio21@gmail.com", 
+
   "email": "fernandocaio19@gmail.com",
-  "senha": "GD*peToHNJ1#c$5gk08EaYJQ"
-  
+  "senha": "GD*peToHNJ1#c$5gk08EaYJQ",
+
+  "nome": "Fernando",
+  "sobrenome": "Caio",
+  "empresa": "Nike",
+  "pais": "Brasil",
+  "rua": "Hugo Mesquita",
+  "numero": "15",
+  "cidade": "Urbelandia",
+  "estado": "Minas Gerais",
+  "cep": "31311000",
+  "telefone": "31333333333"
 }

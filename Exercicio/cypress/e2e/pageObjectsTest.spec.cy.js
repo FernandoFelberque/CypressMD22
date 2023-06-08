@@ -12,7 +12,7 @@ describe('Criar conta', () => {
     });
     
     it('Registrar usuario valido', () => {
-        paginaRegistro.Registro(data.email, data.senha)
+        paginaRegistro.Registro(data.emailPageObjects, data.senha) // caso n funcione por problema com email, porfavor altera o emailPageObjects em data.json
         paginaPainel.painelTab.should("be.visible")
     });
 });
