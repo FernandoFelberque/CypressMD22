@@ -23,7 +23,8 @@ Cypress.Commands.add('CheckOut', () => {
 
 })
 
-Cypress.Commands.add('Login', (user, pass) => {
+// login como adm
+Cypress.Commands.add('login', (user, pass) => {
 
     const fd = new FormData()
     fd.append('username', user)
@@ -38,14 +39,51 @@ Cypress.Commands.add('Login', (user, pass) => {
         body: fd
 
         // Codigo funciona sem a parte dos cookies. Com os Cookies esta dando problema no forEach
-    })//.then(resp => {
-    //resp.headers['set-cookie'].forEach(cookie => {
-    //const primeiro = cookie.split(';')[0]
-    // const divisor = primeiro.indexOf('=')
-    //const chave = primeiro.substring(0, divisor)
-    //const valor = primeiro.substring(divisor + 1)
-    //cy.setCookie(chave, valor)
-    // });
-    //})
+    }).then(resp => {
+    resp.headers['set-cookie'].forEach(cookie => {
+    const primeiro = cookie.split(';')[0]
+    const divisor = primeiro.indexOf('=')
+    const chave = primeiro.substring(0, divisor)
+    const valor = primeiro.substring(divisor + 1)
+    cy.setCookie(chave, valor)
+     });
+    })
+    
+    
     cy.visit('/minha-conta/')
 })
+
+
+// login como user
+Cypress.Commands.add('Login', (usuario, senha) => {
+
+    const fd = new FormData()
+  
+    fd.append('log', usuario)
+    fd.append('pwd', senha)
+    fd.append('wp-submit', 'Acessar')
+    fd.append('redirect_to', `/wp-admin`)
+    fd.append('testcookie', 1)
+  
+  
+  
+    cy.request({
+      url: `/wp-login.php`,
+      method: "POST",
+      body: fd
+    }).then((resp) => {
+  
+      resp.headers['set-cookie'].forEach(cookie => {
+        const firstPart = cookie.split(';')[0]
+        const separator = firstPart.indexOf('=')
+        const name = firstPart.substring(0, separator)
+        const value = firstPart.substring(separator + 1)
+        cy.setCookie(name, value)
+      })
+    })
+
+    cy.visit('/minha-conta/')
+  
+     
+  
+  })
