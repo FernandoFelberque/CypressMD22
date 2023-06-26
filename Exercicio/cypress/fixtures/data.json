@@ -14,5 +14,8 @@
   "cidade": "Urbelandia",
   "estado": "Minas Gerais",
   "cep": "31311000",
-  "telefone": "31333333333"
+  "telefone": "31333333333",
+
+  "quantia": "3"
+  
 }
