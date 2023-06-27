@@ -7,7 +7,7 @@ describe('Intercept Exercicio', () => {
     beforeEach(() => {
 
     });
-
+// 3 add produtos pois estava praticando
     it(' add produto Intercept SPY', () => {
         cy.visit('/product/helena-hooded-fleece/')
         cy.get('.button-variable-item-XS').click()
@@ -19,7 +19,7 @@ describe('Intercept Exercicio', () => {
 
         cy.get('.single_add_to_cart_button').click()
         cy.wait('@mudarInfos').then(intercept => {
-            expect(intercept.response.body.cart_hash).equal("e2874a01d01b7feb533ef2539b904797")
+            expect(intercept.response.body.cart_hash).equal("e2874a01d01b7feb533ef2539b904797")// como manipulo o intercept.response.body.fragments?
         })
 
 
@@ -34,7 +34,7 @@ describe('Intercept Exercicio', () => {
 
         cy.get('.single_add_to_cart_button').click()
         cy.wait('@mudarInfos').then(intercept => {
-            expect(intercept.response.body.cart_hash).equal("cavalo")
+            expect(intercept.response.body.cart_hash).equal("cavalo")// como manipulo o intercept.response.body.fragments?
         })
 
     });
@@ -48,14 +48,14 @@ describe('Intercept Exercicio', () => {
 
         cy.get('.single_add_to_cart_button').click()
         cy.wait('@mudarInfos').then(intercept => {
-            expect(intercept.response.body.cart_hash).equal("cavalo")
+            expect(intercept.response.body.cart_hash).equal("cavalo")// como manipulo o intercept.response.body.fragments?
         })
 
     });
 
-    it.only('', () => {
+    it('Remover produto', () => {
         cy.AddProduto()
-        
+
     });
 
 });
