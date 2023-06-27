@@ -1,10 +1,12 @@
 
 Cypress.Commands.add('AddProduto', () => {
 
+  //cy.intercept('GET','/?wc-ajax=get_refreshed_fragments',{fixture: 'intercept/InterceptFixture.json'})
   cy.visit('/product/helena-hooded-fleece/')
   cy.get('.button-variable-item-XS').click()
   cy.get('.button-variable-item-Gray').click()
   cy.get('.single_add_to_cart_button').click()
+  
 })
 
 Cypress.Commands.add('CheckOut', () => {
