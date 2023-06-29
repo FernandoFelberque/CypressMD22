@@ -7,6 +7,6 @@
         "#cart span.sub-title": "\r\n     <span class=\"sub-title\">Cart : <span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#82;&#36;<\/span>110,00<\/bdi><\/span><\/span>\r\n     \r\n    ",
         "span.cart-mobile": "\r\n    <span class=\"mini-cart-items cart-mobile\">\r\n        2    <\/span>\r\n\r\n    "
     },
-    "cart_hash": "cavalo"
+    "cart_hash": "teste codigo do carrinho"
 
 }

@@ -15,15 +15,9 @@ Cypress.Commands.add('CheckOut', () => {
   cy.get('#terms').click()
   cy.get('#place_order').click()
 
-  // Tentando usar appActions
-  //cy.request({
-  //    url: '/checkout/order-received/',
-  //    method: 'GET',
-  // })
-
 })
 
-// login como adm
+// login como adm AppAction
 Cypress.Commands.add('login', (user, pass) => {
 
   const fd = new FormData()
@@ -54,7 +48,7 @@ Cypress.Commands.add('login', (user, pass) => {
 })
 
 
-// login como user
+// login como user AppAction
 Cypress.Commands.add('Login', (usuario, senha) => {
 
   const fd = new FormData()
@@ -86,18 +80,4 @@ Cypress.Commands.add('Login', (usuario, senha) => {
 
 
 
-})
-
-Cypress.Commands.add('AddProdutoIntercept', (Quantidade) => {
-
-  const fd = new FormData()
-  fd.append('quantity', Quantidade)
-  fd.append('add-to-cart', '10133')
-
-  cy.intercept({
-    method: 'POST',
-    url: '/product/smartphone-teste/',
-    body: fd
-
-  })
 })

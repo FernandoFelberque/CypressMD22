@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-29T17:03:49.388Z",
+    "end": "2023-06-29T17:04:01.907Z",
+    "duration": 12519,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "721355fc-1393-40cf-bb28-3032d7759824",
+      "title": "",
+      "fullFile": "cypress\\e2e\\InterceptTest.spec.cy.js",
+      "file": "cypress\\e2e\\InterceptTest.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "844d9e5f-ae84-42d0-b38c-0551dfa5af49",
+          "title": "Intercept Exercicio",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add Produto exercicio MD23",
+              "fullTitle": "Intercept Exercicio Add Produto exercicio MD23",
+              "timedOut": null,
+              "duration": 4249,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('produto_url')); // testar com local host e base url\ncy.get('.button-variable-item-XS').click();\ncy.get('.button-variable-item-Gray').click();\ncy.intercept('POST', Cypress.env('Mock_url'), {\n  cart_hash: \"teste codigo do carrinho\"\n}).as('mudarInfos');\ncy.get('.single_add_to_cart_button').click();\ncy.wait('@mudarInfos').then(intercept => {\n  expect(intercept.response.body.cart_hash).equal(\"teste codigo do carrinho\");\n});",
+              "err": {},
+              "uuid": "7cfef4ca-f267-49d4-9bdf-3a523473905a",
+              "parentUUID": "844d9e5f-ae84-42d0-b38c-0551dfa5af49",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Remover produto exercicio MD23",
+              "fullTitle": "Intercept Exercicio Remover produto exercicio MD23",
+              "timedOut": null,
+              "duration": 4512,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.AddProduto();\ncy.visit(Cypress.env('carrinho_url'));\ncy.intercept('GET', Cypress.env('remove_url'), {\n  removed_item: \"removido\"\n}).as('mudarInfos');\ncy.get('.remove > .fa').click();\ncy.wait('@mudarInfos').then(intercept => {\n  expect(intercept.response.body.removed_item).equal(\"removido\");\n});",
+              "err": {},
+              "uuid": "c1a82b37-c771-483e-a94d-6929ebf280d7",
+              "parentUUID": "844d9e5f-ae84-42d0-b38c-0551dfa5af49",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update carrinho exercicio MD23",
+              "fullTitle": "Intercept Exercicio Update carrinho exercicio MD23",
+              "timedOut": null,
+              "duration": 3671,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.AddProduto();\ncy.visit(Cypress.env('carrinho_url'));\ncy.intercept('POST', Cypress.env('carrinho_url'), {\n  fixture: 'updateFixture.json'\n}).as('mudarInfos');\ncy.get('.plus').click();\ncy.wait('@mudarInfos').then(intercept => {\n  expect(intercept.response.body.update_cart).equal(\"Update Cart\");\n});",
+              "err": {},
+              "uuid": "2ae118dd-6f22-4e16-8851-c17257ba0f6a",
+              "parentUUID": "844d9e5f-ae84-42d0-b38c-0551dfa5af49",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7cfef4ca-f267-49d4-9bdf-3a523473905a",
+            "c1a82b37-c771-483e-a94d-6929ebf280d7",
+            "2ae118dd-6f22-4e16-8851-c17257ba0f6a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12432,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
