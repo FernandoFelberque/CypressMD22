@@ -4,6 +4,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
 
+  projectId: "8y6owm",
+
   env: {
     produto_url: '/product/helena-hooded-fleece/', //cy.visit(Cypress.env('produto_url'))
     Mock_url: '/?wc-ajax=get_refreshed_fragments', //cy.visit(Cypress.env('Mock_url'))
